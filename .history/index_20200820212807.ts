@@ -22,7 +22,7 @@ server.app.use( fileUpload({ useTempFiles: true }) ); // useTempFile es para cua
 
 
 // Para CORS
-server.app.use( cors({ origin: true, credentials: true }) );
+server.app.use(cors({ origin: true, credentials: true }) );
 
 // -- ALTERNATIVA SIN IMPORTAR NI USAR CORS
 // ------------------------------------------------
@@ -35,8 +35,8 @@ server.app.use( cors({ origin: true, credentials: true }) );
 
 
 // Rutas de mi app
-server.app.use( '/user', userRoutes) ; // Asocia la ruta /user con userRoutes, que se ha importado arriba
-server.app.use( '/posts', postRoutes ); 
+server.app.use('/user', userRoutes); // Asocia la ruta /user con userRoutes, que se ha importado arriba
+server.app.use('/posts', postRoutes); 
 
 // Conectar con DB
 mongoose.connect('mongodb://localhost:27017/fotosgram',
@@ -49,6 +49,6 @@ mongoose.connect('mongodb://localhost:27017/fotosgram',
 )
 
 // Levantar express
-server.start( () => {
+server.start(() => {
   console.log(`Servidor corriendo en puerto ${server.port}`);
 });
