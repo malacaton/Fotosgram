@@ -9,7 +9,7 @@ const postRoutes = Router();
   const fileSystem = new FileSystem() ;
 
 // Obtener POST paginados
-postRoutes.get('/', verificaToken, async (req: any, res: Response) => {
+postRoutes.get('/', async (req: any, res: Response) => {
   let pagina = Number(req.query.pagina) || 1;
   let skip = (pagina-1) * 10;
 
@@ -29,7 +29,7 @@ postRoutes.get('/', verificaToken, async (req: any, res: Response) => {
 
 
 // Crear POST
-postRoutes.post('/', verificaToken, (req: any, res: Response) => {
+postRoutes.post('/', [ verificaToken ], (req: any, res: Response) => {
   const body = req.body;
   body.usuario = req.usuario._id;
   
@@ -52,7 +52,7 @@ postRoutes.post('/', verificaToken, (req: any, res: Response) => {
 });
 
 // Servicio para subir archivos (imágenes en este caso)
- postRoutes.post('/upload', [verificaToken], async (req: any, res: Response) => {
+ postRoutes.post('/upload', [ verificaToken ], async (req: any, res: Response) => {
 
   if (!req.files) {
     return res.status(400).json({
